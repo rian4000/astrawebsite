@@ -28,7 +28,7 @@
   --error-100: #FF2134;
 
   /* gradient */
-  --gradient: linear-gradient(270deg, #0F4392 0%, #001D3D 100%);
+  --gradient: linear-gradient(270deg, #0bc7f7 0%, #001D3D 100%);
 
   /**
    * TYPOGRAPHY
@@ -555,7 +555,9 @@ body {
   #HERO
 \*-----------------------------------*/
 
-.hero-banner { display: none; }
+.hero-banner { 
+  display: none; 
+}
 
 .hero {
   position: relative;
@@ -566,25 +568,35 @@ body {
   isolation: isolate;
 }
 
-.hero-title { color: var(--neutral-100); }
+.hero-title { 
+  color: var(--neutral-100); 
+}
 
-.hero-text { margin-block: 16px 32px; }
+.hero-text { 
+  margin-block: 16px 32px; 
+}
 
 .search-bar {
   background: var(--white);
-  display: grid;
-  padding: 8px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
   gap: 8px;
   border-radius: 16px;
   box-shadow: var(--shadow-4);
+  width: 170%; /* Adjust the width as needed */
+  max-width: 1000px; /* Ensure it doesn't get too wide on large screens */
+  margin: 0 auto;
 }
 
 .search-item {
   position: relative;
+  flex: 1;
   color: var(--neutral-50);
 }
 
 .search-item .search-item-field {
+  width: 100%;
   height: 76px;
   padding: 40px 16px 12px;
   border-radius: var(--radius-medium);
@@ -610,7 +622,7 @@ body {
 .search-item .material-symbols-rounded {
   top: 50%;
   right: 16px;
-  translate: 0 -50%;
+  transform: translate(0, -50%);
   color: var(--primary-100);
 }
 
@@ -620,26 +632,79 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 64px;
-  padding-inline: 24px;
-  gap: 12px;
-  border-radius: 12px;
+  height: 100px; /* Adjust height for the button */
+  padding: 0 46px; /* Adjust padding as needed */
+  gap: 40px;
+  border-radius: var(--radius-medium);
   transition: var(--transition-duration-quick) var(--transition-easing-quick);
+  border: none;
+  cursor: pointer;
 }
 
-.search-btn:where(:hover, :focus) { background-color: var(--primary-80); }
+.search-btn .material-symbols-rounded {
+  font-size: 40px; /* Adjust font size of the symbol */
+  border: 0px solid var(--primary-100); /* Add a border around the symbol */
+  padding: 0px; /* Adjust padding to increase the height of the border */
+  border-radius: 50%; /* Make the border rounded */
+}
 
-.search-btn:where(:active, :focus-visible) { background-color: var(--primary-70); }
+.search-btn:where(:hover, :focus) { 
+  background-color: var(--primary-80); 
+}
+
+.search-btn:where(:active, :focus-visible) { 
+  background-color: var(--primary-70); 
+}
 
 .hero .bg-pattern {
   position: absolute;
   top: 50%;
   left: 25%;
   right: 0;
-  translate: 0 -50%;
+  transform: translate(0, -50%);
   min-height: 100%;
   pointer-events: none;
   z-index: -2;
+}
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+  .hero {
+    padding-block: 100px 30px; /* Adjust padding for smaller screens */
+  }
+
+  .search-bar {
+    width: 100%; /* Set width to 100% for smaller screens */
+    padding: 8px; /* Adjust padding for smaller screens */
+    gap: 4px; /* Adjust gap for smaller screens */
+    border-radius: 12px; /* Adjust border radius for smaller screens */
+  }
+
+  .search-item .search-item-field {
+    height: 60px; /* Adjust height for smaller screens */
+    padding: 20px 12px; /* Adjust padding for smaller screens */
+  }
+
+  .search-item .label {
+    top: 8px; /* Adjust top position for smaller screens */
+    left: 12px; /* Adjust left position for smaller screens */
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .search-item .material-symbols-rounded {
+    font-size: 24px; /* Adjust font size for smaller screens */
+    right: 12px; /* Adjust right position for smaller screens */
+  }
+
+  .search-btn {
+    height: 86px; /* Adjust height for smaller screens */
+    padding: 0 20px; /* Adjust padding for smaller screens */
+    gap: 8px; /* Adjust gap for smaller screens */
+  }
+
+  .search-btn .material-symbols-rounded {
+    font-size: 20px; /* Adjust font size for smaller screens */
+  }
 }
 
 
@@ -650,7 +715,10 @@ body {
   #PROPERTY
 \*-----------------------------------*/
 
-.property { padding-block-start: 60px; }
+.property {
+  padding-block-start: 60px;
+  padding-block-end: 40px; /* Add padding between property and feature sections */
+}
 
 .property .section-text {
   margin-block: 8px 16px;
@@ -671,10 +739,16 @@ body {
   #FEATURE
 \*-----------------------------------*/
 
+.feature{
+  padding-block-start: 60px;
+  padding-block-end: 40px; /* Add padding between property and feature sections */
+}
+
 .feature-banner {
   aspect-ratio: 3 / 2;
   overflow: hidden;
   border-radius: var(--radius-extra-large);
+  
 }
 
 .feature-content { padding: 24px 16px 0; }
@@ -745,6 +819,9 @@ body {
 /*-----------------------------------*\
   #STORY
 \*-----------------------------------*/
+.story {
+  padding-block-start: 40px; /* Add padding above STORY section */
+}
 
 .story .section-subtitle { color: var(--primary-100); }
 
