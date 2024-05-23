@@ -36,7 +36,7 @@ $toggleBtns.forEach($toggleBtn => {
  */
 function initAutocomplete() {
   const addressInput = document.getElementById('address_search');
-  const autocomplete = new google.maps.places.Autocomplete(addressInput);
+  const searchBox = new google.maps.places.SearchBox(addressInput);
 }
 
 // Call initAutocomplete when the page loads
@@ -47,16 +47,60 @@ window.addEventListener('load', () => {
 /**
  * Handle search button click
  */
-const searchButton = document.getElementById('search_button');
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle search button click
+  const searchButton = document.getElementById('search_button');
+  searchButton.addEventListener('click', function() {
+    // Get the address input value
+    const addressInput = document.getElementById('address_search');
+    const address = addressInput.value.trim();
 
-searchButton.addEventListener('click', () => {
-  const addressInput = document.getElementById('address_search');
-  const address = addressInput.value.trim();
+    // Redirect to the contact info page with the address parameter
+    if (address !== '') {
+      window.location.href = 'contact.html?address=' + encodeURIComponent(address);
+    } else {
+      console.log('Please enter a valid location');
+    }
+  });
+});
 
-  if (address !== '') {
-    // You can perform your search action here, for example:
-    console.log('Searching for:', address);
-  } else {
-    console.log('Please enter a valid location');
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to get URL parameters
+  const getUrlParameter = (name) => {
+    name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    const results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  };
+
+  // Get the address parameter from the URL
+  const addressParam = getUrlParameter('address');
+
+  // Populate the address input field if the address parameter is present
+  if (addressParam) {
+    const addressInput = document.getElementById('address');
+    addressInput.value = addressParam;
   }
+});
+
+/**
+ * Submit handler for the search form
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  // Add event listener to the search form submit button
+  const searchForm = document.getElementById('search_form');
+  searchForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Get the address input value
+    const addressInput = document.getElementById('address_search');
+    const address = addressInput.value.trim();
+
+    // Redirect to the contact info page with the address parameter
+    if (address !== '') {
+      window.location.href = 'contact.html?address=' + encodeURIComponent(address);
+    } else {
+      console.log('Please enter a valid location');
+    }
+  });
 });
