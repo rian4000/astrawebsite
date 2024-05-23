@@ -3,7 +3,6 @@
 /**
  * navbar toggle in mobile
  */
-
 const $navbar = document.querySelector("[data-navbar]");
 const $navToggler = document.querySelector("[data-nav-toggler]");
 
@@ -12,7 +11,6 @@ $navToggler.addEventListener("click", () => $navbar.classList.toggle("active"));
 /**
  * Header scroll state
  */
-
 const $header = document.querySelector("[data-header]");
 
 window.addEventListener("scroll", () => {
@@ -22,7 +20,6 @@ window.addEventListener("scroll", () => {
 /**
  * Add to favorite button toggle
  */
-
 const $toggleBtns = document.querySelectorAll("[data-toggle-btn]");
 
 $toggleBtns.forEach($toggleBtn => {
@@ -102,6 +99,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Redirect to the contact info page with the address parameter
     if (address !== '') {
       window.location.href = 'contact.html?address=' + encodeURIComponent(address);
+
+      // Scroll to the top of the success message element after the form is submitted
+      const successMessage = document.getElementById('successMessage');
+      window.scrollTo({ top: successMessage.offsetTop, behavior: 'smooth' });
     } else {
       console.log('Please enter a valid location');
     }
