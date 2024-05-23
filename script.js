@@ -36,7 +36,10 @@ $toggleBtns.forEach($toggleBtn => {
  */
 function initAutocomplete() {
   const addressInput = document.getElementById('address_search');
-  const searchBox = new google.maps.places.SearchBox(addressInput);
+  const options = {
+    componentRestrictions: { country: 'US' } // Restrict to the United States
+  };
+  const searchBox = new google.maps.places.SearchBox(addressInput, options);
 }
 
 // Call initAutocomplete when the page loads
