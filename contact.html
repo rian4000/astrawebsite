@@ -135,6 +135,7 @@
 
               <!-- Contact Info Form -->
     <section class="contact-form-section">
+     
       <div class="container">
           <form class="contact-form" id="contactForm">
               <h2>Contact Us</h2>
@@ -159,30 +160,13 @@
                   <input type="checkbox" id="opt-in" name="opt-in"> 
               </div>
               <button type="submit">Submit</button>
+              <div class="success-message" id="successMessage">Successfully submitted!</div>
+            </div>
           </form>
-          <div class="success-message" id="successMessage">Successfully submitted!</div>
-      </div>
+          
   </section>
 
-  <script>
-      document.getElementById("contactForm").addEventListener("submit", function(event) {
-          event.preventDefault();
-          // Your form submission logic here
 
-          // Show the success message
-          document.getElementById("successMessage").style.display = "block";
-
-          // Scroll to the success message
-          document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-
-          // Clear all the fields
-          document.getElementById('name').value = '';
-          document.getElementById('email').value = '';
-          document.getElementById('phone').value = '';
-          document.getElementById('address').value = '';
-          document.getElementById('opt-in').checked = false;
-      });
-  </script>
 </body>
 </html>
 

@@ -108,3 +108,86 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+
+// Function to fetch property data and display on home screen
+function displayProperties() {
+  // Fetch property data from hidden HTML page or database
+  // Parse the data into JavaScript objects
+
+  // Example data (replace with actual data retrieval)
+  const properties = [
+    {
+      image: 'property1.jpg',
+      description: 'Beautiful house in a quiet neighborhood',
+      bedrooms: 3,
+      bathrooms: 2,
+      price: '$300,000'
+    },
+    {
+      image: 'property2.jpg',
+      description: 'Spacious apartment with great views',
+      bedrooms: 2,
+      bathrooms: 1,
+      price: '$200,000'
+    }
+    // Add more property objects as needed
+  ];
+
+  const propertyContainer = document.querySelector('.property-container');
+
+  properties.forEach(property => {
+    const propertyCard = document.createElement('div');
+    propertyCard.classList.add('property-card');
+
+    // Create elements for property information (similar to previous example)
+    // ...
+
+    // Append elements to property card
+    // ...
+
+    // Append property card to container
+    propertyContainer.appendChild(propertyCard);
+  });
+}
+
+// Call the displayProperties function when the page loads
+window.addEventListener('load', displayProperties);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        // Get form input values
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const optIn = document.getElementById('opt-in').checked;
+
+        // Here you can perform validation of the input fields if needed
+
+        // For demonstration, let's assume the form is valid and the data is submitted successfully
+        // You can replace this with your actual form submission logic
+
+        // Show success message
+        successMessage.style.display = 'block';
+
+        successMessage.style.display = 'block';
+
+        // Calculate the scroll position to center the success message vertically
+        const viewportHeight = window.innerHeight;
+        const successMessageRect = successMessage.getBoundingClientRect();
+        const successMessageTop = successMessageRect.top + window.scrollY;
+        const scrollTop = successMessageTop - (viewportHeight / 1.5) + (successMessageRect.height / 2);
+
+        // Scroll to the calculated position
+        window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+
+        // Optional: Reset form fields after submission
+        contactForm.reset();
+    });
+});
